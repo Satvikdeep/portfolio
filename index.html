@@ -170,6 +170,8 @@
             padding: 1.5rem;
             background-color: rgba(255, 140, 0, 0.03);
             transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
@@ -189,13 +191,15 @@
             font-size: 0.9rem;
             color: #ccc;
             margin-bottom: 1.5rem;
-            height: 80px; /* Fixed height for uniformity */
+            height: 80px;
             overflow: hidden;
+            flex-grow: 1;
         }
 
         .btn-group {
             display: flex;
             gap: 1rem;
+            margin-top: auto;
         }
 
         .btn {
@@ -266,10 +270,14 @@
         /* --- Contact --- */
         .contact-line {
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
         }
         .contact-label {
             color: var(--dim-color);
             margin-right: 1rem;
+            display: inline-block;
+            min-width: 90px; /* Fixed width for alignment */
         }
         .contact-link {
             color: var(--primary-color);
@@ -287,7 +295,7 @@
         /* Mobile Adjustments */
         @media (max-width: 600px) {
             .nav-links {
-                display: none; /* Hide nav links on very small screens for cleanliness */
+                display: none;
             }
             .container {
                 padding: 1rem;
@@ -354,8 +362,8 @@
                         A real-time auction platform featuring instant bid updates, user authentication, and a dynamic dashboard for tracking live auctions seamlessly.
                     </div>
                     <div class="btn-group">
-                        <a href="#" class="btn" target="https://github.com/Satvikdeep?tab=repositories">Live Link</a>
-                        <a href="#" class="btn" target="https://github.com/Satvikdeep?tab=repositories">GitHub</a>
+                        <a href="https://github.com/Satvikdeep?tab=repositories" class="btn" target="_blank">Live Link</a>
+                        <a href="https://github.com/Satvikdeep?tab=repositories" class="btn" target="_blank">GitHub</a>
                     </div>
                 </div>
 
@@ -365,8 +373,9 @@
                     <div class="project-desc">
                          A competitive productivity tool where peers sync timers, battle for "Daily Winner," and track weekly leaderboards. Doubles as a distraction-free fullscreen stopwatch.
                     </div>
-                        <a href="#" class="btn" target="https://baby-timer.vercel.app/">Live Link</a>
-                        <a href="#" class="btn" target="https://github.com/Satvikdeep/baby-timer">GitHub</a>
+                    <div class="btn-group">
+                        <a href="https://baby-timer.vercel.app/" class="btn" target="_blank">Live Link</a>
+                        <a href="https://github.com/Satvikdeep/baby-timer" class="btn" target="_blank">GitHub</a>
                     </div>
                 </div>
 
@@ -377,8 +386,8 @@
                         A fast-paced, 2-player local arcade game built with Pygame. Players race to snatch falling coins while dodging obstacles, featuring dynamic scoring and retro mechanics.
                     </div>
                     <div class="btn-group">
-                        <a href="#" class="btn" target="https://github.com/Satvikdeep?tab=repositories">Live Link</a>
-                        <a href="#" class="btn" target="https://github.com/Satvikdeep?tab=repositories">GitHub</a>
+                        <a href="https://github.com/Satvikdeep?tab=repositories" class="btn" target="_blank">Live Link</a>
+                        <a href="https://github.com/Satvikdeep?tab=repositories" class="btn" target="_blank">GitHub</a>
                     </div>
                 </div>
 
@@ -430,15 +439,15 @@
             <br>
             <div class="contact-line">
                 <span class="prompt">➜</span> <span class="contact-label">Email:</span> 
-                <a href="mailto:satvik@iitd.ac.in" class="contact-link">satvikdeep96@gmail.com</a>
+                <a href="mailto:satvikdeep96@gmail.com" class="contact-link">satvikdeep96@gmail.com</a>
             </div>
             <div class="contact-line">
                 <span class="prompt">➜</span> <span class="contact-label">GitHub:</span> 
-                <a href="https://github.com/satvik" target="_blank" class="contact-link">https://github.com/Satvikdeepk</a>
+                <a href="https://github.com/Satvikdeepk" target="_blank" class="contact-link">https://github.com/Satvikdeepk</a>
             </div>
             <div class="contact-line">
                 <span class="prompt">➜</span> <span class="contact-label">LinkedIn:</span> 
-                <a href="#" class="contact-link">https://www.linkedin.com/in/satvik-deep-999mg/</a>
+                <a href="https://www.linkedin.com/in/satvik-deep-999mg/" target="_blank" class="contact-link">https://www.linkedin.com/in/satvik-deep-999mg/</a>
             </div>
             <br>
             <p style="color: var(--dim-color); font-size: 0.8rem; margin-top: 2rem;">
