@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satvik | Terminal Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0c0c0c;
+            --terminal-bg: #141414;
+            --primary-color: #ff8c00; /* Deep Orange */
+            --secondary-color: #ffa500; /* Lighter Orange */
+            --dim-color: #664400;
+            --text-color: #ffe6cc;
+            --font-stack: 'Courier New', Courier, monospace;
+            --scanline-color: rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-stack);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        /* --- CRT Effect Overlay --- */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.2) 50%,
+                rgba(0,0,0,0.2)
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.6;
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--dim-color);
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .nav-links a::before {
+            content: "./";
+            color: var(--dim-color);
+        }
+
+        /* --- Sections --- */
+        section {
+            margin-bottom: 5rem;
+            opacity: 0; /* Hidden for animation */
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 1px dashed var(--dim-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2::before {
+            content: "> ";
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            padding-top: 2rem;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .typing-container {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            min-height: 3.2rem; /* Reserve space */
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            background-color: var(--primary-color);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* --- Projects Grid --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            border: 1px solid var(--dim-color);
+            padding: 1.5rem;
+            background-color: rgba(255, 140, 0, 0.03);
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 4px 4px 0px var(--dim-color);
+            border-color: var(--primary-color);
+        }
+
+        .project-title {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            height: 60px; /* Fixed height for uniformity */
+            overflow: hidden;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            font-family: var(--font-stack);
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--primary-color);
+            color: var(--bg-color);
+        }
+
+        /* --- Skills --- */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            border: 1px solid var(--dim-color);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .skill-tag::before {
+            content: "$ ";
+            color: var(--dim-color);
+        }
+
+        /* --- Experience --- */
+        .timeline-item {
+            border-left: 2px solid var(--dim-color);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background-color: var(--bg-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .job-title {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .job-date {
+            font-size: 0.8rem;
+            color: var(--dim-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Contact --- */
+        .contact-line {
+            margin-bottom: 0.5rem;
+        }
+        .contact-label {
+            color: var(--dim-color);
+            margin-right: 1rem;
+        }
+        .contact-link {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        .prompt {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none; /* Hide nav links on very small screens for cleanliness */
+            }
+            .container {
+                padding: 1rem;
+            }
+            #hero {
+                min-height: 50vh;
+            }
+            .typing-container {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scanlines"></div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">user@satvik:~$</div>
+            <div class="nav-links">
+                <a href="#about">about</a>
+                <a href="#projects">projects</a>
+                <a href="#skills">skills</a>
+                <a href="#contact">contact</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="hero" class="visible">
+            <div class="typing-container">
+                <span id="typing-text"></span><span class="cursor">&nbsp;</span>
+            </div>
+            <div style="margin-top: 2rem; color: #888;">
+                <span class="prompt">➜</span> <span style="color: var(--text-color)">cat intro.txt</span><br>
+                <br>
+                > Hello world! I'm Satvik.<br>
+                > Student at <span class="highlight">IIT Delhi</span>.<br>
+                > Full Stack Developer & Tech Enthusiast.
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>01_About_Me</h2>
+            <p>
+                As a student at the prestigious <strong>Indian Institute of Technology (IIT), Delhi</strong>, I thrive at the intersection of complex algorithms and real-world applications.
+            </p>
+            <p>
+                I am passionate about turning caffeine into clean, efficient code. My journey involves solving hard engineering problems and building scalable software that actually makes a difference. Whether it's competitive programming or systems design, I'm always looking for the next challenge to 'sudo' my way through.
+            </p>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>02_Projects</h2>
+            <div class="project-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-title">bid-karo</div>
+                    <div class="project-desc">
+                        A real-time auction platform featuring instant bid updates, user authentication, and a dynamic dashboard for tracking live auctions seamlessly.
+                    </div>
+                    <div class="btn-group">
+                        <a href="#" class="btn" target="_blank">Live Link</a>
+                        <a href="#" class="btn" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-title">baby-timer</div>
+                    <div class="project-desc">
+                        An intuitive parenting assistant app to track sleep cycles, feeding schedules, and growth milestones with data visualization tools.
+                    </div>
+                    <div class="btn-group">
+                        <a href="#" class="btn" target="_blank">Live Link</a>
+                        <a href="#" class="btn" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-title">cash-the-coin</div>
+                    <div class="project-desc">
+                        A gamified personal finance tracker that rewards saving habits with virtual currency, making budget management engaging and fun.
+                    </div>
+                    <div class="btn-group">
+                        <a href="#" class="btn" target="_blank">Live Link</a>
+                        <a href="#" class="btn" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>03_Skills</h2>
+            <div class="skills-container">
+                <div class="skill-tag">C++ / STL</div>
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">JavaScript (ES6+)</div>
+                <div class="skill-tag">React.js</div>
+                <div class="skill-tag">Node.js</div>
+                <div class="skill-tag">MongoDB</div>
+                <div class="skill-tag">Git / GitHub</div>
+                <div class="skill-tag">Linux / Bash</div>
+                <div class="skill-tag">Data Structures</div>
+                <div class="skill-tag">Algorithms</div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>04_Experience</h2>
+            
+            <div class="timeline-item">
+                <div class="job-title">Software Engineering Intern @ TechFlow Systems</div>
+                <div class="job-date">May 2024 - July 2024</div>
+                <p>
+                    Optimized backend REST APIs reducing latency by 40%. Collaborated with the frontend team to integrate real-time data visualization using WebSockets.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="job-title">Core Team Member @ DevClub IITD</div>
+                <div class="job-date">August 2023 - Present</div>
+                <p>
+                    Organized hackathons and conducted workshops on Web Development for over 200+ juniors. Maintained the club's official website and internal tools.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>05_Contact</h2>
+            <p>Initiating communication protocol...</p>
+            <br>
+            <div class="contact-line">
+                <span class="prompt">➜</span> <span class="contact-label">Email:</span> 
+                <a href="mailto:satvik@iitd.ac.in" class="contact-link">satvik@iitd.ac.in</a>
+            </div>
+            <div class="contact-line">
+                <span class="prompt">➜</span> <span class="contact-label">GitHub:</span> 
+                <a href="https://github.com/satvik" target="_blank" class="contact-link">github.com/satvik</a>
+            </div>
+            <div class="contact-line">
+                <span class="prompt">➜</span> <span class="contact-label">LinkedIn:</span> 
+                <a href="#" class="contact-link">linkedin.com/in/satvik</a>
+            </div>
+            <br>
+            <p style="color: var(--dim-color); font-size: 0.8rem; margin-top: 2rem;">
+                -- End of transmission --
+            </p>
+        </section>
+    </div>
+
+    <script>
+        // Typing Effect Logic
+        const textToType = "Welcome to Satvik's Portfolio...";
+        const typeContainer = document.getElementById('typing-text');
+        let typeIndex = 0;
+
+        function typeWriter() {
+            if (typeIndex < textToType.length) {
+                typeContainer.innerHTML += textToType.charAt(typeIndex);
+                typeIndex++;
+                setTimeout(typeWriter, 100); // Speed of typing
+            }
+        }
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            if (section.id !== 'hero') { // Hero is visible by default
+                observer.observe(section);
+            }
+        });
+
+        // Start typing on load
+        window.onload = function() {
+            setTimeout(typeWriter, 500);
+        };
+    </script>
+</body>
+</html>
