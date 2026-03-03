@@ -281,12 +281,12 @@ export default function Home() {
                     </button>
                   )}
                 </div>
-                <div className="md:col-span-3 md:pt-2">
+                <div className="md:col-span-3 flex items-center">
                   <p className="font-mono text-[11px] text-white/30 tracking-wider leading-relaxed">
                     {project.tech}
                   </p>
                 </div>
-                <div className="md:col-span-4 md:pt-1">
+                <div className="md:col-span-4 flex items-center">
                   <p className="font-sans text-sm text-white/45 leading-relaxed">
                     {project.desc}
                   </p>
