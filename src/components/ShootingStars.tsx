@@ -39,20 +39,26 @@ export default function ShootingStars() {
             }, c.duration * 1000 + 300);
         };
 
-        /* ── Initial burst: 3 comets in the first 1.5s ── */
-        const t1 = setTimeout(() => spawn(), 200);
-        const t2 = setTimeout(() => spawn(), 700);
-        const t3 = setTimeout(() => spawn(), 1400);
+        /* ── Initial burst: 6 comets in the first 2s ── */
+        const t1 = setTimeout(() => spawn(), 100);
+        const t2 = setTimeout(() => spawn(), 350);
+        const t3 = setTimeout(() => spawn(), 650);
+        const t4 = setTimeout(() => spawn(), 1000);
+        const t5 = setTimeout(() => spawn(), 1400);
+        const t6 = setTimeout(() => spawn(), 1800);
 
-        /* ── Then exactly once every 25 seconds ── */
+        /* ── Then exactly once every 20 seconds ── */
         const interval = setInterval(() => {
             spawn();
-        }, 25000);
+        }, 20000);
 
         return () => {
             clearTimeout(t1);
             clearTimeout(t2);
             clearTimeout(t3);
+            clearTimeout(t4);
+            clearTimeout(t5);
+            clearTimeout(t6);
             clearInterval(interval);
         };
     }, []);
