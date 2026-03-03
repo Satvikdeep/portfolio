@@ -10,6 +10,7 @@ import {
   techStack,
   education,
   aboutParagraphs,
+  audioTracks,
 } from "@/data/portfolio";
 
 /* ── Tech Stack SVG Icons (monochrome) ───────── */
@@ -131,6 +132,20 @@ export default function Home() {
       className="relative z-10 min-h-screen px-6 md:px-16 lg:px-24 xl:px-32 pb-32"
       onMouseMove={handleMouseMove}
     >
+      {/* ── Preload crucial assets for instant loading ── */}
+      <link rel="preload" as="audio" href={audioTracks[0]} />
+      {projects
+        .filter((project) => project.hasPreview)
+        .slice(0, 2)
+        .map((project) => (
+          <link
+            key={project.name}
+            rel="preload"
+            as="image"
+            href={project.img}
+          />
+        ))}
+
       {/* ═══════════════════════════════════════ */}
       {/* HERO                                    */}
       {/* ═══════════════════════════════════════ */}

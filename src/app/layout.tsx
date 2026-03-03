@@ -3,7 +3,7 @@ import "./globals.css";
 import ShootingStars from "@/components/ShootingStars";
 
 export const metadata: Metadata = {
-  title: "Satvik — Software Developer",
+  title: "Satvik",
   description:
     "Satvik's personal portfolio. Builder of real-time systems, low-level engines, and clean frontends. Based in Delhi, India.",
 };
