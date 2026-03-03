@@ -281,12 +281,12 @@ export default function Home() {
                     </button>
                   )}
                 </div>
-                <div className="md:col-span-3">
+                <div className="md:col-span-3 md:pt-2">
                   <p className="font-mono text-[11px] text-white/30 tracking-wider leading-relaxed">
                     {project.tech}
                   </p>
                 </div>
-                <div className="md:col-span-4">
+                <div className="md:col-span-4 md:pt-1">
                   <p className="font-sans text-sm text-white/45 leading-relaxed">
                     {project.desc}
                   </p>
@@ -486,9 +486,9 @@ export default function Home() {
           </div>
 
           <p className="font-sans text-sm text-white/40 mb-8 max-w-xl">
-            Sometimes the easiest way to hit a deep flow state for me is to just set up a camera and hit record. 
-            What started as a simple accountability trick has turned into my favorite way to log long, uninterrupted hours of work. 
-            Building takes time and quiet focus, and this timelapse is a transparent look at what that actually looks like for me. 
+            Sometimes the easiest way to hit a deep flow state for me is to just set up a camera and hit record.
+            What started as a simple accountability trick has turned into my favorite way to log long, uninterrupted hours of work.
+            Building takes time and quiet focus, and this timelapse is a transparent look at what that actually looks like for me.
           </p>
           <div className="yt-container relative w-full max-w-3xl aspect-video overflow-hidden">
             <iframe
