@@ -125,21 +125,21 @@ export const education: Education[] = [
     {
         label: "College",
         institution: "IIT Delhi",
-        desc: "Pursuing a degree in Computer Science. Focused on systems programming, algorithms, and building side projects that solve interesting problems.",
-        period: "2023 — Present",
+        desc: "Pursuing a degree in Biochemical Engineering and Biotechnology. Focused on systems programming, algorithms, and building side projects that solve interesting problems.",
+        period: "2022 — Present",
     },
     {
         label: "Senior Secondary",
         institution: "High School",
         desc: "Completed senior secondary education with a focus on science and mathematics. Built the foundation for competitive programming and logical thinking.",
-        period: "2021 — 2023",
+        period: "2019 — 2021",
     },
 ];
 
 // ── About / The Author ─────────────────────
 
 export const aboutParagraphs = [
-    "I'm Satvik — a computer science student at IIT Delhi who gravitates toward building things from the ground up. From real-time auction systems and calorie trackers to puzzle engines in C++ and concurrent key-value stores in Go, I chase projects that force me to understand how things actually work under the hood. I care about clean interfaces, fast backends, and writing code that another human can read without wanting to close the file.",
+    "I'm Satvik — a final year student at IIT Delhi who gravitates toward building things from the ground up. From real-time auction systems and calorie trackers to puzzle engines in C++ and concurrent key-value stores in Go, I chase projects that force me to understand how things actually work under the hood. I care about clean interfaces, fast backends, and writing code that another human can read without wanting to close the file.",
     "Outside of code, I lead design teams, run workshops on Figma and Illustrator, and sketch wireframes in notebooks that look exactly like the ones you see on this page. I'm currently looking for SDE roles where I can ship real products to real users — and keep learning by breaking things worth breaking.",
 ];
 

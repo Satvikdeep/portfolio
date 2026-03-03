@@ -409,7 +409,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════ */}
-      {/* EDUCATION (moved after Tech Stack)      */}
+      {/* EDUCATION*/}
       {/* ═══════════════════════════════════════ */}
       <section className="mt-32">
         <div className="border-t border-white/10 pt-8">
