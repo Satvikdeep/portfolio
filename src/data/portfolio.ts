@@ -174,8 +174,9 @@ export const aboutParagraphs = [
 // ── Audio tracks (dummy paths for now) ──────
 
 export const audioTracks = [
-    "/audio/track-01.mp3",
-    "/audio/track-02.mp3",
-    "/audio/track-03.mp3",
-    "/audio/track-04.mp3",
+    "/audio/1. Navjot Ahuja - Khat (Official Audio) - Navjot Ahuja.mp3",
+    "/audio/2. Gigi Perez - Sailor Song [Official Audio] - Gigi Perez.mp3",
+    "/audio/3. Gracie Abrams - I miss you, I’m sorry (Lyric Video) - GracieAbramsVEVO.mp3",
+    "/audio/4. Navjot Ahuja - Bayaan (Official Audio) - Navjot Ahuja.mp3",
+    "/audio/5. RIHA by Anuv Jain (Studio) - Anuv Jain.mp3",
 ];

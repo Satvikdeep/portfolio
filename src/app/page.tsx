@@ -485,12 +485,11 @@ export default function Home() {
             </span>
           </div>
 
-          <p className="font-sans text-sm text-white/40 mb-8 max-w-lg">
-            Sometimes I hit record and just work. No commentary, no edits —
-            just the sound of keys and ambient music. Here&apos;s one of
-            those sessions.
+          <p className="font-sans text-sm text-white/40 mb-8 max-w-xl">
+            Sometimes the easiest way to hit a deep flow state for me is to just set up a camera and hit record. 
+            What started as a simple accountability trick has turned into my favorite way to log long, uninterrupted hours of work. 
+            Building takes time and quiet focus, and this timelapse is a transparent look at what that actually looks like for me. 
           </p>
-
           <div className="yt-container relative w-full max-w-3xl aspect-video overflow-hidden">
             <iframe
               src="https://www.youtube.com/embed/tioupB0pRmg"
@@ -515,13 +514,20 @@ export default function Home() {
             </p>
           </div>
           <div className="flex gap-8">
-            {["GitHub", "LinkedIn", "Twitter", "Email"].map((link) => (
+            {([
+              { label: "GitHub", href: "https://github.com/Satvikdeep" },
+              { label: "LinkedIn", href: "https://www.linkedin.com/in/satvik-deep/" },
+              { label: "Twitter", href: "https://x.com/potassyumyum" },
+              { label: "Email", href: "mailto:satvikatwork@gmail.com" },
+            ] as const).map((link) => (
               <a
-                key={link}
-                href="#"
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-mono text-xs text-white/30 hover:text-white/60 transition-colors tracking-wider uppercase"
               >
-                {link}
+                {link.label}
               </a>
             ))}
           </div>
