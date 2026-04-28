@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Portfolio — [Her Name]</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --amber: #E07B2A;
+    --amber-light: #F5D4B0;
+    --amber-pale: #FDF0E3;
+    --dark: #1A1714;
+    --dark-2: #3D3830;
+    --mid: #7A6F65;
+    --teal: #1E7B6E;
+    --teal-light: #C8EAE5;
+    --white: #FFFFFF;
+    --border: rgba(26,23,20,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(250,247,242,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--dark); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 48px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-eyebrow {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1.5px solid var(--dark);
+    border-radius: 40px;
+    padding: 6px 16px;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .pill.filled { background: var(--dark); color: var(--white); }
+  .pill.amber { background: var(--amber); border-color: var(--amber); color: var(--white); }
+  .pill.teal { background: var(--teal); border-color: var(--teal); color: var(--white); }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(64px, 10vw, 128px);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    color: var(--dark);
+    max-width: 900px;
+    margin-bottom: 40px;
+  }
+  .hero-title em {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 400;
+  }
+
+  .hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+  }
+  .hero-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--mid);
+    max-width: 420px;
+  }
+  .hero-meta {
+    text-align: right;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+  .hero-year {
+    font-size: 80px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--amber-light);
+    line-height: 1;
+    margin-top: 4px;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--dark);
+    color: var(--white);
+    padding: 80px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-left {}
+  .about-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 20px;
+  }
+  .about-hi {
+    font-family: 'DM Serif Display', serif;
+    font-size: 56px;
+    font-style: italic;
+    line-height: 1.1;
+    margin-bottom: 28px;
+    color: var(--white);
+  }
+  .about-name-line {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .about-role {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 28px;
+    letter-spacing: 0.02em;
+  }
+  .about-bio {
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.75);
+  }
+  .about-bio p + p { margin-top: 16px; }
+
+  .about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .about-photo-frame {
+    background: var(--amber-pale);
+    border-radius: 16px;
+    aspect-ratio: 3/4;
+    max-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--amber);
+  }
+  .about-photo-placeholder {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--amber);
+    text-align: center;
+    padding: 32px;
+  }
+  .about-quote {
+    background: var(--amber);
+    border-radius: 12px;
+    padding: 24px;
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--white);
+  }
+  .about-quote span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-top: 12px;
+  }
+
+  /* WHAT I DO */
+  .services {
+    padding: 80px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dark);
+  }
+  .section-count {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--mid);
+  }
+
+  .services-hero-text {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .services-hero-text .scroll-text {
+    display: inline-block;
+    animation: marquee 18s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .services-hero-text .outline { -webkit-text-stroke: 2px var(--dark); color: transparent; }
+  .services-hero-text .filled { color: var(--dark); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 56px;
+  }
+  .service-item {
+    background: var(--white);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .service-item:hover { background: var(--amber-pale); }
+  .service-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--amber);
+  }
+  .service-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--dark);
+  }
+  .service-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--mid);
+  }
+
+  .skills-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .skill-tag {
+    background: var(--dark);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 40px;
+    letter-spacing: 0.02em;
+  }
+  .skill-tag.outline-tag {
+    background: transparent;
+    border: 1.5px solid var(--dark);
+    color: var(--dark);
+  }
+
+  /* WORK */
+  .work {
+    padding: 80px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .work-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: end;
+    margin-bottom: 64px;
+  }
+  .work-big-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+  .work-big-title em {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 400;
+    text-transform: none;
+    display: block;
+  }
+  .work-sub {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--mid);
+    padding-bottom: 8px;
+  }
+
+  /* PROJECT CARDS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .project-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--border);
+  }
+  .project-card:hover { transform: translateY(-4px); }
+  .project-card.wide { grid-column: span 2; }
+
+  .project-visual {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .project-visual-placeholder {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+  }
+
+  .project-body {
+    padding: 24px 28px 28px;
+  }
+  .project-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .project-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--amber-pale);
+    color: var(--amber);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+  .project-tag.dark-tag {
+    background: var(--dark);
+    color: var(--white);
+  }
+  .project-tag.teal-tag {
+    background: var(--teal-light);
+    color: var(--teal);
+  }
+  .project-client {
+    font-size: 12px;
+    color: var(--mid);
+  }
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    color: var(--dark);
+  }
+  .project-copy-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .project-copy {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--dark-2);
+    border-left: 2px solid var(--amber);
+    padding-left: 16px;
+    margin-bottom: 16px;
+  }
+  .project-copy-full {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--mid);
+  }
+  .project-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0;
+  }
+  .project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .project-format {
+    font-size: 12px;
+    color: var(--mid);
+  }
+  .project-cta {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--amber);
+    letter-spacing: 0.02em;
+  }
+
+  /* FEATURED PROJECT */
+  .featured {
+    padding: 80px 48px;
+    background: var(--amber-pale);
+    border-bottom: 1px solid var(--border);
+  }
+  .featured-header {
+    margin-bottom: 48px;
+  }
+  .featured-eyebrow {
+    display: inline-block;
+    background: var(--amber);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  .featured-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--dark);
+  }
+  .featured-body {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 48px;
+  }
+  .featured-info {}
+  .featured-info-block {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+  }
+  .featured-info-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }
+  .featured-info-text {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--dark-2);
+  }
+  .featured-work {}
+  .featured-spreads {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .featured-spread {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .featured-spread-img {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 12px;
+  }
+  .featured-spread-copy {
+    padding: 16px;
+  }
+  .featured-spread-copy p {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--mid);
+    font-style: italic;
+  }
+  .featured-pull-quote {
+    background: var(--dark);
+    border-radius: 12px;
+    padding: 28px 32px;
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.45;
+    color: var(--white);
+  }
+  .featured-pull-quote cite {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-top: 16px;
+  }
+
+  /* OTHER PROJECTS */
+  .other-projects {
+    padding: 80px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .other-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .other-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.2s;
+  }
+  .other-card:hover { transform: translateY(-3px); }
+  .other-card-img {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+  }
+  .other-card-body {
+    padding: 16px 18px 20px;
+  }
+  .other-card-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 6px;
+  }
+  .other-card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .other-card-copy {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--mid);
+    font-style: italic;
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--dark);
+    padding: 80px 48px;
+    color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .contact-left {}
+  .contact-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .contact-title em {
+    color: var(--amber);
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+  }
+  .contact-sub {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
+    max-width: 380px;
+  }
+  .contact-right {}
+  .contact-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .contact-info-item:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+  .contact-info-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+  .contact-info-value {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--white);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+  .footer-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">[Her Name] ✦</a>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Say Hi</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span class="pill filled">2022 — 2025</span>
+    <span class="pill amber">Copywriter</span>
+    <span class="pill teal">Marketing Creative</span>
+  </div>
+
+  <h1 class="hero-title">
+    Creative<br>
+    <em>Portfolio</em>
+  </h1>
+
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      Words that make people feel something, remember something, and do something. Across travel, tourism, healthcare, events, and more.
+    </p>
+    <div class="hero-meta">
+      <div>India-based · Available for marketing roles</div>
+      <div class="hero-year">25</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-left reveal">
+    <div class="about-label">A little about me</div>
+    <div class="about-hi">Hi,</div>
+    <div class="about-name-line">My name is [Her Name],</div>
+    <div class="about-role">Copywriter · Content Strategist · Marketing Creative</div>
+    <div class="about-bio">
+      <p>I started writing for a living at [First Company], where I discovered that good copy isn't about sounding clever — it's about sounding like the brand, and making the reader feel seen.</p>
+      <p>I've written for beaches and boardrooms. For government tourism campaigns and travel companies. For hospitals and consulting firms. The brief changes. The craft doesn't.</p>
+      <p>If there's work I haven't done yet, I haven't had the right brief yet. Give it to me.</p>
+    </div>
+  </div>
+  <div class="about-right reveal" style="transition-delay: 0.15s;">
+    <div class="about-photo-frame">
+      <div class="about-photo-placeholder">
+        Your photo here<br>
+        <span style="font-size:13px; opacity:0.6;">(drop in an image)</span>
+      </div>
+    </div>
+    <div class="about-quote">
+      "When I write about something new, I have to understand it so well that the reader feels like it was written just for them."
+      <span>— Her philosophy</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header">
+    <span class="section-title">What I bring to the table</span>
+    <span class="section-count">03 services</span>
+  </div>
+
+  <div class="services-hero-text" aria-hidden="true">
+    <span class="scroll-text">
+      <span class="filled">CONTENT MARKETING &nbsp;</span>
+      <span class="outline">BRAND STRATEGY &nbsp;</span>
+      <span class="filled">COPYWRITING &nbsp;</span>
+      <span class="outline">SOCIAL MEDIA &nbsp;</span>
+      <span class="filled">CONTENT MARKETING &nbsp;</span>
+      <span class="outline">BRAND STRATEGY &nbsp;</span>
+      <span class="filled">COPYWRITING &nbsp;</span>
+      <span class="outline">SOCIAL MEDIA &nbsp;</span>
+    </span>
+  </div>
+
+  <div class="services-grid reveal">
+    <div class="service-item">
+      <div class="service-num">01</div>
+      <div class="service-name">Long-form & Campaign Copy</div>
+      <div class="service-desc">Magazine spreads, event collateral, brand manifestos, travel editorial. Writing that lives with design and gives it meaning.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">02</div>
+      <div class="service-name">Social Media & Digital</div>
+      <div class="service-desc">Captions, campaign hooks, CTAs, website copy. Short-form writing that performs within a single scroll.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">03</div>
+      <div class="service-name">Marketing Strategy & Content Planning</div>
+      <div class="service-desc">From brief to execution. Understanding the audience, the objective, and the right words to bridge both.</div>
+    </div>
+  </div>
+
+  <div class="skills-row reveal" style="transition-delay: 0.2s;">
+    <span class="skill-tag">Travel & Tourism</span>
+    <span class="skill-tag">Healthcare</span>
+    <span class="skill-tag">B2B / Consulting</span>
+    <span class="skill-tag">Events & Culture</span>
+    <span class="skill-tag outline-tag">Brand Voice</span>
+    <span class="skill-tag outline-tag">SEO Content</span>
+    <span class="skill-tag outline-tag">Campaign Copy</span>
+    <span class="skill-tag outline-tag">Social Media</span>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="work-intro">
+    <div class="work-big-title reveal">
+      MY<br>
+      <em>Writing</em><br>
+      WORK
+    </div>
+    <p class="work-sub reveal" style="transition-delay:0.1s;">
+      Each piece below includes the actual copy written — not just a screenshot of the design. Because that's the work. The words are the work.
+    </p>
+  </div>
+
+  <!-- PROJECT 1 — Gujarat Tourism Spread -->
+  <div class="projects-grid">
+    <div class="project-card wide reveal">
+      <div class="project-visual">
+        <div class="project-visual-placeholder" style="height:320px; background: linear-gradient(135deg, #1D4E6B 0%, #0D3347 100%);">
+          <div style="text-align:center;">
+            <div style="font-size:11px; letter-spacing:0.1em; margin-bottom:8px;">GUJARAT TOURISM (TCGL)</div>
+            <div style="font-size:28px; font-weight:800; letter-spacing:-0.02em;">GUJARAT'S MOST<br>BEAUTIFUL SHORES</div>
+            <div style="font-size:12px; margin-top:10px; opacity:0.6;">Magazine double spread · 2025</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-meta">
+          <span class="project-tag">Magazine spread</span>
+          <span class="project-tag dark-tag">Gujarat Tourism · TCGL</span>
+        </div>
+        <div class="project-title">Gujarat's Most Beautiful Shores</div>
+        <div class="project-copy-label">What she wrote ↓</div>
+        <div class="project-copy">
+          "Gujarat's coast is one of India's great natural inheritances, vast, varied, and gleaming by the light that makes every hour on its shores feel like the golden one."
+        </div>
+        <div class="project-copy-full">
+          Each beach got its own paragraph — a distinct personality, a distinct voice. Shivrajpur gets quiet reverence. Somnath gets sacred awe. Pingleshwar gets wonder. The challenge: 8 beaches, 8 moods, one consistent voice. Plus the closing line that had to carry everything:
+        </div>
+        <div class="project-copy" style="margin-top:14px;">
+          "Gujarat's beaches have it all — the warm sand, the sacred shores, the moments that carry the scent of incense and salt together. Come, feel it for yourself."
+        </div>
+        <div class="project-divider"></div>
+        <div class="project-footer">
+          <span class="project-format">Format: Double spread for print magazine</span>
+          <span class="project-cta">Government of Gujarat ✦</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 — Madhavpur Fair -->
+    <div class="project-card reveal" style="transition-delay:0.1s;">
+      <div class="project-visual">
+        <div class="project-visual-placeholder" style="height:240px; background: linear-gradient(135deg, #7A1F1A 0%, #B8420A 100%);">
+          <div style="text-align:center;">
+            <div style="font-size:10px; letter-spacing:0.1em; margin-bottom:8px;">MADHAVPUR FAIR 2026</div>
+            <div style="font-size:20px; font-weight:800;">CELEBRATING<br>EK BHARAT</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-meta">
+          <span class="project-tag">Event poster</span>
+          <span class="project-tag dark-tag">Govt. of Gujarat</span>
+        </div>
+        <div class="project-title">Madhavpur Fair 2026</div>
+        <div class="project-copy-label">What she wrote ↓</div>
+        <div class="project-copy">
+          "The Madhavpur Fair is a vibrant expression of India's living legacy. This festival symbolises devotion, tradition, and unity, brought alive through enchanting folk dances and cultural performances."
+        </div>
+        <div class="project-divider"></div>
+        <div class="project-footer">
+          <span class="project-format">Inauguration by Chief Minister, Gujarat</span>
+          <span class="project-cta">Cultural event ✦</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 — Akshar Travels -->
+    <div class="project-card reveal" style="transition-delay:0.2s;">
+      <div class="project-visual">
+        <div class="project-visual-placeholder" style="height:240px; background: linear-gradient(135deg, #102B50 0%, #185FA5 100%);">
+          <div style="text-align:center;">
+            <div style="font-size:10px; letter-spacing:0.1em; margin-bottom:8px;">AKSHAR TRAVELS</div>
+            <div style="font-size:24px; font-weight:800;">BEST OF<br>EUROPE '26</div>
+            <div style="font-size:11px; margin-top:8px; opacity:0.7;">13 Days · 18 Cities · 9 Countries</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-meta">
+          <span class="project-tag">Travel flyer</span>
+          <span class="project-tag teal-tag">Akshar Travels</span>
+        </div>
+        <div class="project-title">Best of Europe '26</div>
+        <div class="project-copy-label">What she wrote ↓</div>
+        <div class="project-copy">
+          "Experience Europe's most iconic destinations in one thoughtfully crafted journey."
+        </div>
+        <div class="project-copy-full">
+          Short-form promotional copy for a high-value travel package. The brief: make $3,205 feel like the most obvious decision someone could make.
+        </div>
+        <div class="project-divider"></div>
+        <div class="project-footer">
+          <span class="project-format">Travel promotional flyer</span>
+          <span class="project-cta">Tourism brand ✦</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECT -->
+<section class="featured">
+  <div class="featured-header reveal">
+    <div class="featured-eyebrow">Featured Project</div>
+    <h2 class="featured-title">Gujarat Tourism — Magazine Spreads</h2>
+  </div>
+  <div class="featured-body">
+    <div class="featured-info reveal">
+      <div class="featured-info-block">
+        <div class="featured-info-label">About the client</div>
+        <div class="featured-info-text">Tourism Corporation of Gujarat Limited (TCGL) — the official tourism arm of the Government of Gujarat. One of India's most storied state tourism bodies.</div>
+      </div>
+      <div class="featured-info-block">
+        <div class="featured-info-label">The brief</div>
+        <div class="featured-info-text">Write travel editorial copy for a magazine double spread covering Gujarat's coastline — 8 beaches, each with their own character and story.</div>
+      </div>
+      <div class="featured-info-block">
+        <div class="featured-info-label">Her work</div>
+        <div class="featured-info-text">
+          · Hero headline & standfirst copy<br>
+          · Individual beach descriptions (8 unique voices)<br>
+          · Closing call-to-action line<br>
+          · Multiple layout variations for print
+        </div>
+      </div>
+    </div>
+    <div class="featured-work reveal" style="transition-delay:0.15s;">
+      <div class="featured-spreads">
+        <div class="featured-spread">
+          <div class="featured-spread-img" style="background: linear-gradient(135deg, #1D4E6B, #0D3347);">Shivrajpur Beach</div>
+          <div class="featured-spread-copy"><p>"A few kilometres from the sacred city of Dwarka, this is where the Arabian Sea presents itself in colours most languages cannot name."</p></div>
+        </div>
+        <div class="featured-spread">
+          <div class="featured-spread-img" style="background: linear-gradient(135deg, #2A4A3E, #1B3A2D);">Somnath Beach</div>
+          <div class="featured-spread-copy"><p>"This is a beach for standing still. At dusk, with temple bells in the salt air, the experience becomes something for which most of us have no words."</p></div>
+        </div>
+        <div class="featured-spread">
+          <div class="featured-spread-img" style="background: linear-gradient(135deg, #4A3520, #2C1F0E);">Pingleshwar Beach</div>
+          <div class="featured-spread-copy"><p>"Golden sand, endless horizon, and the company of migratory birds that arrive each season as though they know something the rest of us don't."</p></div>
+        </div>
+        <div class="featured-spread">
+          <div class="featured-spread-img" style="background: linear-gradient(135deg, #3A2A4A, #26215C);">Luni Beach</div>
+          <div class="featured-spread-copy"><p>"Be surrounded by water on all sides. The sand here is soft, the evening breeze cool and unhurried, and the only sound is the kind that reminds you what silence actually feels like."</p></div>
+        </div>
+      </div>
+      <div class="featured-pull-quote">
+        "Gujarat's beaches have it all — the warm sand, the sacred shores, the moments that carry the scent of incense and salt together. Come, feel it for yourself."
+        <cite>— Closing line, Gujarat Tourism Magazine Spread</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OTHER PROJECTS -->
+<section class="other-projects">
+  <div class="section-header reveal">
+    <span class="section-title">Other projects</span>
+    <span class="section-count">More work</span>
+  </div>
+  <div class="other-grid">
+    <div class="other-card reveal">
+      <div class="other-card-img" style="background: linear-gradient(135deg, #3B1A3B, #534AB7);">Healthcare Brand</div>
+      <div class="other-card-body">
+        <div class="other-card-tag">Healthcare · Brand copy</div>
+        <div class="other-card-title">Hospital brand & web copy</div>
+        <div class="other-card-copy">"Warm, clear, and credible — for an audience that's often anxious."</div>
+      </div>
+    </div>
+    <div class="other-card reveal" style="transition-delay:0.1s;">
+      <div class="other-card-img" style="background: linear-gradient(135deg, #1A1A2E, #444441);">Consulting Web Copy</div>
+      <div class="other-card-body">
+        <div class="other-card-tag">B2B · Website</div>
+        <div class="other-card-title">Consulting firm website</div>
+        <div class="other-card-copy">"Sharp. Credible. No buzzwords that mean nothing."</div>
+      </div>
+    </div>
+    <div class="other-card reveal" style="transition-delay:0.2s;">
+      <div class="other-card-img" style="background: linear-gradient(135deg, #7A1A4A, #D4537E);">Social Media</div>
+      <div class="other-card-body">
+        <div class="other-card-tag">Social media · Captions</div>
+        <div class="other-card-title">Instagram & social copy</div>
+        <div class="other-card-copy">"Some places don't need a filter. Others need exactly the right words."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left reveal">
+    <h2 class="contact-title">
+      Let's<br>
+      <em>work</em><br>
+      together.
+    </h2>
+    <p class="contact-sub">Looking for a writer who can shift tone between industries without losing the plot? That's the job. Let's talk.</p>
+  </div>
+  <div class="contact-right reveal" style="transition-delay:0.15s;">
+    <div class="contact-info-item">
+      <span class="contact-info-label">Email</span>
+      <span class="contact-info-value">her.name@email.com</span>
+    </div>
+    <div class="contact-info-item">
+      <span class="contact-info-label">Location</span>
+      <span class="contact-info-value">India · Available remotely</span>
+    </div>
+    <div class="contact-info-item">
+      <span class="contact-info-label">LinkedIn</span>
+      <span class="contact-info-value">linkedin.com/in/hername</span>
+    </div>
+    <div class="contact-info-item">
+      <span class="contact-info-label">Open to</span>
+      <span class="contact-info-value">Marketing roles · Freelance · Contracts</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© 2025 · All copy written by [Her Name]</span>
+  <span class="footer-name">[Her Name] · Copywriter & Marketing Creative</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) el.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

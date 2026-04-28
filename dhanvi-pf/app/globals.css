@@ -1,0 +1,273 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* === COLORS === */
+  --color-cream: #FAF7F2;
+  --color-amber: #E07B2A;
+  --color-amber-light: #F5D4B0;
+  --color-amber-pale: #FDF0E3;
+  --color-dark: #1A1714;
+  --color-dark-2: #3D3830;
+  --color-mid: #7A6F65;
+  --color-teal: #1E7B6E;
+  --color-teal-light: #C8EAE5;
+  --color-easycater-green: #B5E60A;
+  --color-easycater-dark: #0D3B1A;
+  --color-white: #FFFFFF;
+
+  /* === FONTS === */
+  --font-syne: var(--font-family-syne);
+  --font-dm-serif: var(--font-family-dm-serif);
+  --font-dm-sans: var(--font-family-dm-sans);
+
+  /* === ANIMATIONS === */
+  --animate-marquee: marquee 24s linear infinite;
+  --animate-marquee-slow: marquee 36s linear infinite;
+  --animate-fade-up: fade-up 0.7s ease both;
+  --animate-fade-in: fade-in 0.6s ease both;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+/* === KEYFRAMES (outside @theme for inline style usage) === */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* === BASE === */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-dm-sans);
+  background: var(--color-cream);
+  color: var(--color-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === SCROLL REVEAL === */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease,
+              transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay helper classes */
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+
+/* === SELECTION === */
+::selection {
+  background: var(--color-amber);
+  color: var(--color-white);
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-amber-light);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-amber);
+}
+
+/* ============================================================ */
+/*  RESPONSIVE — Mobile-first overrides (≤ 768px)               */
+/* ============================================================ */
+@media (max-width: 768px) {
+
+  /* ---- Global padding squeeze ---- */
+  .section-pad {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  /* ---- Hero ---- */
+  #hero {
+    padding: 100px 24px 60px !important;
+    min-height: auto !important;
+  }
+  #hero h1 {
+    font-size: clamp(48px, 12vw, 80px) !important;
+  }
+  #hero .hero-bottom {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 24px !important;
+  }
+  #hero .hero-meta {
+    text-align: left !important;
+  }
+  #hero .hero-meta .hero-year {
+    font-size: 48px !important;
+  }
+
+  /* ---- About ---- */
+  #about {
+    padding: 40px 24px !important;
+  }
+  #about > div {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  #about .about-photo {
+    max-height: 300px !important;
+  }
+
+  /* ---- Services ---- */
+  #services {
+    padding: 40px 24px !important;
+  }
+  #services .services-header {
+    flex-direction: column !important;
+    gap: 8px !important;
+    align-items: flex-start !important;
+  }
+  #services .services-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ---- Work ---- */
+  #work {
+    padding: 40px 24px 0 !important;
+  }
+  #work .work-header {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  #work .work-grid {
+    grid-template-columns: 1fr !important;
+  }
+  /* Wide cards naturally span 1 in single-col */
+  #work .work-grid > * {
+    grid-column: span 1 !important;
+  }
+  /* Easy Cater mini copy cards */
+  .ec-mini-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* ---- Featured Project ---- */
+  .featured-section {
+    padding: 40px 24px !important;
+  }
+  .featured-body {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .featured-beaches {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ---- Easy Cater Spotlight ---- */
+  .ec-spotlight {
+    padding: 40px 24px !important;
+  }
+  .ec-spotlight > div {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  /* ---- Contact ---- */
+  #contact {
+    padding: 40px 24px !important;
+  }
+  #contact > div {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  /* ---- Footer ---- */
+  .site-footer {
+    padding: 16px 24px !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    text-align: center !important;
+  }
+
+  /* ---- Nav mobile ---- */
+  .nav-links {
+    display: none !important;
+  }
+  .nav-hamburger {
+    display: flex !important;
+  }
+  #navbar {
+    padding: 14px 24px !important;
+  }
+
+  /* ---- Mobile menu overlay ---- */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(250, 247, 242, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .mobile-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .mobile-menu a {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1A1714;
+    text-decoration: none;
+  }
+}
+
+/* Desktop: hide hamburger, show links */
+@media (min-width: 769px) {
+  .nav-hamburger {
+    display: none !important;
+  }
+}
